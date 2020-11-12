@@ -6,12 +6,16 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 public class HibernateUtils {
     private static HibernateUtils instance;
 
     private SessionFactory sessionFactory;
 
-    private HibernateUtils() {
+    private EntityManager HibernateUtils() {
         StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
                 .configure("hibernate.cfg.xml")
                 .build();
@@ -23,6 +27,11 @@ public class HibernateUtils {
         sessionFactory = metadata
                 .getSessionFactoryBuilder()
                 .build();
+        EntityManagerFactory entityManager = Persistence.createEntityManagerFactory("pl.system.Task.Entity.Users");
+
+        public EntityManager getEntityManager(){
+
+        }
     }
 
     public static HibernateUtils getInstance() {
@@ -35,4 +44,6 @@ public class HibernateUtils {
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
+
+
 }

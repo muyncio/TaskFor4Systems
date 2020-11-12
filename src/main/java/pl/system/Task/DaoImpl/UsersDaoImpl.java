@@ -11,6 +11,7 @@ import javax.persistence.NoResultException;
 import java.util.List;
 
 public class UsersDaoImpl implements UsersDao {
+
     @Override
     public void save(Users users) {
         SessionFactory factory = HibernateUtils
@@ -33,7 +34,7 @@ public class UsersDaoImpl implements UsersDao {
         Users users = null;
         try {
             users = (Users) session
-                    .createQuery("from Users where id=:id")
+                    .createQuery("from Users where Users.id=: id")
                     .setParameter("id", id)
                     .getSingleResult();
         }catch (NoResultException e) {}

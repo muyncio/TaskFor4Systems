@@ -11,13 +11,20 @@ import javax.persistence.*;
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String surname;
     private String login;
 
+    public Users(String name, String surname, String login) {
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+    }
+
     public Users() {
+
     }
 
     public Integer getId() {
